@@ -63,6 +63,13 @@ const calcService = (answers) => {
             }
         }
     }
+
+    //calculate the meal fee
+    if (/^\d+$/.test(answers['numOfPeople'])&&  /^\d+$/.test(answers['numOfDays'])) {
+        const p1 = parseInt(answers['numOfPeople'])
+        const p2 = parseInt(answers['numOfDays'])
+        total += p1 * p2 * 200
+    }
     return total
 }
 

@@ -1,5 +1,7 @@
 import React, {Component, PropTypes} from 'react';
-import { ListGroup, ListGroupItem,FormControl, Panel, Form, ControlLabel, FormGroup,Radio } from 'react-bootstrap';
+import { ListGroup, ListGroupItem, FormControl, Panel, Form, ControlLabel, FormGroup, Radio } from 'react-bootstrap';
+import { connect } from 'react-redux'
+import { otherValidateTraffic, otherValidateMisc } from '../actions'
 
 class Others extends Component {
     render() {
@@ -8,13 +10,17 @@ class Others extends Component {
                 <Panel header="其他费用" bsStyle="success">
                     <ListGroup>
                         <ListGroupItem>
-                        <Form inline>
-                                <FormGroup controlId="car">
-                                    <ControlLabel>交通费估计，约1,500人民币每月</ControlLabel>
+                            <Form inline>
+                                <FormGroup controlId="car" validationState={this.props.validateState.Traffic}>
+                                    <ControlLabel>交通费估计，约1, 500人民币每月</ControlLabel>
                                     {' '}
-                                    <FormControl type="text" placeholder="1500" />
+                                    <FormControl
+                                        type="text"
+                                        placeholder="请填写 ..."
+                                        name="Traffic"
+                                        onChange={this.props.MiscQ}/>
+                                    <FormControl.Feedback />
                                 </FormGroup>
-
                             </Form>
                         </ListGroupItem>
                         <ListGroupItem>
@@ -37,12 +43,16 @@ class Others extends Component {
                         </ListGroupItem>
                         <ListGroupItem>
                             <Form inline>
-                                <FormGroup controlId="misc">
+                                <FormGroup controlId="misc" validationState={this.props.validateState.Misc}>
                                     <ControlLabel>其他项目（如机票）汇总</ControlLabel>
                                     {' '}
-                                    <FormControl type="text" placeholder="请填写 ..." />
+                                    <FormControl
+                                        type="text"
+                                        placeholder="请填写 ..."
+                                        name= "Misc"
+                                        onChange={this.props.MiscQ}/>
+                                    <FormControl.Feedback />
                                 </FormGroup>
-
                             </Form>
                         </ListGroupItem>
                     </ListGroup>
@@ -52,8 +62,32 @@ class Others extends Component {
     }
 }
 
-Others.propTypes = {
+const mapDispatchToProps = (dispatch) => {
+    return {
+        MiscQ: (e) => {
+            // let payload = {
+            //     name: e.target.name,
+            //     value: e.target.value
+            // }
+            // dispatch(miscAction(payload))
 
-};
+            switch (e.target.name) {
+                case 'Traffic':
+                    dispatch(otherValidateTraffic(e.target.value))
+                    break;
+                case 'Misc':
+                    dispatch(otherValidateMisc(e.target.value))
+                    break;
+                default:
+            }
+        },
+    }
+}
 
-export default Others;
+const mapStateToProps = (state) => {
+    return {
+        validateState: state.validateReducer.miscState,
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Others);

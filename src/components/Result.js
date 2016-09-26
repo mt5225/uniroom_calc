@@ -44,7 +44,7 @@ const mapStateToProps = (state) => {
         progress: progressString,
         progressPercentage: percent,
         done: finishState,
-        totalPrice: state.calcReducer.totalPrice,
+        totalPrice: state.calcReducer.totalPrice, 
     }
 }
 

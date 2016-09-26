@@ -33,3 +33,30 @@ export const mealAction = (payload) => {
     }
 }
 
+export const mealValidatePeople = (payload) => {
+    return {
+        type: 'V_MEAL_PEOPLE',
+        payload
+    }
+}
+
+export const mealValidateDays = (payload) => {
+    return {
+        type: 'V_MEAL_DAYS',
+        payload
+    }
+}
+
+export const otherValidateTraffic = (payload) => {
+    return {
+        type: 'V_OTHER_TRAFFIC',
+        payload
+    }
+}
+
+export const otherValidateMisc = (payload) => {
+    return {
+        type: 'V_OTHER_MISC',
+        payload
+    }
+}
