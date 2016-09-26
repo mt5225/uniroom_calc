@@ -4,13 +4,9 @@ import House from './House'
 import Care from './Care'
 import Meal from './Meal'
 import Others from './Others'
-import {Tabs, Tab, MenuItem } from 'react-bootstrap';
+import {Tabs, Tab } from 'react-bootstrap';
 
 class Nav extends Component {
-
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (

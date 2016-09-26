@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component } from 'react';
 import { ListGroup, ListGroupItem, FormControl, Panel, Form, ControlLabel, FormGroup, Radio } from 'react-bootstrap';
 import { connect } from 'react-redux'
 import { otherValidateTraffic, otherValidateMisc, miscAction} from '../actions'
@@ -61,7 +61,7 @@ class Others extends Component {
                                     <FormControl
                                         type="text"
                                         placeholder="请填写 ..."
-                                        name= "Misc"
+                                        name="Misc"
                                         onChange={this.props.MiscQ}/>
                                     <FormControl.Feedback />
                                 </FormGroup>

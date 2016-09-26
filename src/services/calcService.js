@@ -67,7 +67,7 @@ const calcService = (answers) => {
     //calculate the meal fee
     if (/^\d+$/.test(answers['numOfPeople']) && /^\d+$/.test(answers['numOfDays'])) {
         const p1 = parseInt(answers['numOfPeople'], 10)
-        const p2 = parseInt(answers['numOfDays'])
+        const p2 = parseInt(answers['numOfDays'], 10)
         total += p1 * p2 * 200
     }
 

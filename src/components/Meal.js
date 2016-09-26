@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component } from 'react';
 import { Form, ControlLabel, FormGroup, FormControl, Panel } from 'react-bootstrap';
 import { connect } from 'react-redux'
 import { mealAction, mealValidatePeople, mealValidateDays } from '../actions'
