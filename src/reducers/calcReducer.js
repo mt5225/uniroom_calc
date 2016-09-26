@@ -12,6 +12,9 @@ const initialState = {
         careMode: '',
         numOfPeople: '',
         numOfDays: '',
+        traffic: '',
+        numOfBaby: '',
+        misc: '',
     }
 }
 
@@ -47,15 +50,28 @@ const calcReducer = (state = initialState, action) => {
 
         case 'Q_MEAL':
             if (action.payload.name === 'People') {
-                 state.answers['numOfPeople'] = action.payload.value
-                 return updateSummary(state)
+                state.answers['numOfPeople'] = action.payload.value
+                return updateSummary(state)
             }
             if (action.payload.name === 'Days') {
-                 state.answers['numOfDays'] = action.payload.value
-                 return updateSummary(state)
+                state.answers['numOfDays'] = action.payload.value
+                return updateSummary(state)
             }
             break;
-
+        case 'Q_MISC':
+            if (action.payload.name === 'Traffic') {
+                state.answers['traffic'] = action.payload.value
+                return updateSummary(state)
+            }
+            if (action.payload.name === 'Misc') {
+                state.answers['misc'] = action.payload.value
+                return updateSummary(state)
+            }
+            if (action.payload.name === 'babyMode') {
+                state.answers['numOfBaby'] = action.payload.value
+                return updateSummary(state)
+            }
+            break;
         default:
             return state
     }

@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import { ListGroup, ListGroupItem, FormControl, Panel, Form, ControlLabel, FormGroup, Radio } from 'react-bootstrap';
 import { connect } from 'react-redux'
-import { otherValidateTraffic, otherValidateMisc } from '../actions'
+import { otherValidateTraffic, otherValidateMisc, miscAction} from '../actions'
 
 class Others extends Component {
     render() {
@@ -27,15 +27,27 @@ class Others extends Component {
                             <h5>美宝证件（按人数）</h5>
                             <form>
                                 <FormGroup>
-                                    <Radio name="babyMode" inline>
+                                    <Radio
+                                        name="babyMode"
+                                        value="1"
+                                        onClick={this.props.MiscQ}
+                                        inline>
                                         1
                                     </Radio>
                                     {' '}
-                                    <Radio name="babyMode"  inline>
+                                    <Radio
+                                        name="babyMode"
+                                        value="2"
+                                        onClick={this.props.MiscQ}
+                                        inline>
                                         2
                                     </Radio>
                                     {' '}
-                                    <Radio name="babyMode" inline>
+                                    <Radio
+                                        name="babyMode"
+                                        value="2"
+                                        onClick={this.props.MiscQ}
+                                        inline>
                                         3
                                     </Radio>
                                 </FormGroup>
@@ -65,11 +77,11 @@ class Others extends Component {
 const mapDispatchToProps = (dispatch) => {
     return {
         MiscQ: (e) => {
-            // let payload = {
-            //     name: e.target.name,
-            //     value: e.target.value
-            // }
-            // dispatch(miscAction(payload))
+            let payload = {
+                name: e.target.name,
+                value: e.target.value
+            }
+            dispatch(miscAction(payload))
 
             switch (e.target.name) {
                 case 'Traffic':

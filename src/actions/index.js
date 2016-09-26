@@ -33,6 +33,17 @@ export const mealAction = (payload) => {
     }
 }
 
+export const miscAction = (payload) => {
+    return {
+        type: 'Q_MISC',
+        payload
+    }
+}
+
+/**
+ * for validations
+ */
+
 export const mealValidatePeople = (payload) => {
     return {
         type: 'V_MEAL_PEOPLE',
